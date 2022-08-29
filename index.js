@@ -3,6 +3,8 @@ const cheerio = require("cheerio")
 
 const url = 'https://ifrs.edu.br/vacaria/editais'
 
+const notices = process.argv[2] // number of notices to print
+
 request(url, (error, response, html) => {
   if (!error && response.statusCode == 200) {
     const $ = cheerio.load(html);
@@ -22,6 +24,6 @@ request(url, (error, response, html) => {
       array.push(obj)
     }
 
-    console.log(array.slice(0, 5))
+    console.log(array.slice(0, notices))
   }
 })
